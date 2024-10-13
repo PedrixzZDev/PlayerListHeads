@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(PlayerListHud.class)
 public abstract class PlayerListHudMixin {
 
-    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MinecraftClient;isLocalPlayer()Z"))
+    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MinecraftClient;isInSingleplayer()Z"))
     private boolean renderHeads(MinecraftClient instance) {
         // Certifique-se de que este código só é executado no cliente
         if (instance.isInSingleplayer()) {
